@@ -1,0 +1,7 @@
+ControlSocket /run/tor/control
+ControlSocketsGroupWritable 1
+CookieAuthentication 1
+CookieAuthFile /run/tor/control.authcookie
+CookieAuthFileGroupReadable 1
+SocksPort 0.0.0.0:9050 #SOCKSPort 9050 # Default: Bind to localhost:9050 for local connections.
+ControlPort 0.0.0.0:9051

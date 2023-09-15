@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  tor1:
+    build:
+      context: .
+      dockerfile: tor/Dockerfile
+    command: /usr/bin/tor
+    ports:
+      - "9050:9050"
+      - "9051:9051"
+  tor2:
+    build:
+      context: .
+      dockerfile: tor/Dockerfile
+    command: /usr/bin/tor
+    ports:
+      - "19050:9050"
+      - "19051:9051"
+  python:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    command: python flask-server.py
+    ports:
+      - "5000:5000"
+      - "8888:8888"
+    depends_on:
+      - tor1
+      - tor2
